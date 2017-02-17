@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -7,9 +8,11 @@ injectTapEventPlugin();
 const App = React.createClass({
   render() {
     return (
-      <div className='App'>
-        {this.props.children}
-      </div>
+      <MuiThemeProvider>
+        <div className='App'>
+          {this.props.children}
+        </div>
+      </MuiThemeProvider>
     );
   }
 });
