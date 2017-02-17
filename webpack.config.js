@@ -68,7 +68,12 @@ module.exports = {
       {
         test: /\.jsx$/,
         include: __dirname + '/src/',
-        loader: "react-hot!babel",
+        loader: "react-hot",
+      },
+      {
+        test: /\.jsx$/,
+        include: __dirname + '/src/',
+        loader: "babel",
         query: {
           presets: ['es2015', 'react']
         }
