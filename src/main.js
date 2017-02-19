@@ -9,6 +9,8 @@ import App            from './App.jsx';
 import LoggedInLayout from './components/LoggedInLayout.jsx';
 import LoginPage      from './components/LoginPage.jsx';
 import AboutPage      from './components/AboutPage.jsx';
+import TasklistsPage  from './components/TasklistsPage.jsx';
+import TasksPage      from './components/TasksPage.jsx';
 
 window.handleGoogleApiLoaded = () => {
   SessionActions.authorize(true, renderApp);
@@ -21,6 +23,9 @@ function renderApp() {
         <Route path='/login' component={LoginPage} />
         <Route component={LoggedInLayout} onEnter={requireAuth}>
           <Route path='/about' component={AboutPage}/>
+          <Route path='/lists' component={TasklistsPage}>
+            <Route path='/lists/:id' component={TasksPage}/>
+          </Route>
         </Route>
       </Route>
     </Router>,
