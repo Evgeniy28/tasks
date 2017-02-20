@@ -28,5 +28,16 @@ export default {
     return new Promise((resolve, rejects) => {
       request.execute(resp => resolve(resp));
     });
+  },
+
+  // Insert task lists to google.com/tasks
+  insertTaskList({ title }) {
+    const request = gapi.client.tasks.tasklists.insert({
+      title: title
+    });
+
+    return new Promise((resolve, reject) => {
+      request.execute(resp => resolve(resp));
+    });
   }
 }

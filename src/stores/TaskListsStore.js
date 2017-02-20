@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
-import AppDispatcher from '../dispatcher/AppDispatcher';
-import AppConstants from '../constants/AppConstants';
+import AppDispatcher    from '../dispatcher/AppDispatcher';
+import AppConstants     from '../constants/AppConstants';
 
 const CHANGE_EVENT = 'change';
 
@@ -44,6 +44,21 @@ AppDispatcher.register(function(action) {
 
     case AppConstants.TASK_LISTS_LOAD_FAIL: {
       _taskLists = [];
+      _error = action.error;
+
+      TaskListsStore.emitChange();
+      break;
+    }
+
+    case AppConstants.TASK_LIST_CREATE_SUCCESS: {
+      const newTaskList = formatTaskList(action.taskList);
+      _taskLists.push(newTaskList);
+
+      TaskListsStore.emitChange();
+      break;
+    }
+
+    case AppConstants.TASK_LIST_CREATE_FAIL: {
       _error = action.error;
 
       TaskListsStore.emitChange();
