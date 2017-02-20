@@ -19,5 +19,14 @@ export default {
         }
       );
     });
+  },
+
+  // Load task lists from google.com/tasks
+  listTaskLists() {
+    const request = gapi.client.tasks.tasklists.list();
+
+    return new Promise((resolve, rejects) => {
+      request.execute(resp => resolve(resp));
+    });
   }
 }
