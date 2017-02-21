@@ -1,9 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React                from 'react';
+import { Link }             from 'react-router';
+import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
+
+// import './styles/base.scss';
 
 const App = React.createClass({
   render() {

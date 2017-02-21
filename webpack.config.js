@@ -36,7 +36,7 @@ module.exports = {
         include: __dirname + '/src/',
         loader: "babel",
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015']
         }
       },
       {
@@ -75,7 +75,7 @@ module.exports = {
         include: __dirname + '/src/',
         loader: "babel",
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015']
         }
       },
       {

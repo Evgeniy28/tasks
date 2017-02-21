@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './LoggedInLayout.scss';
+
 const LoggedInLayout = React.createClass({
   render() {
     return (

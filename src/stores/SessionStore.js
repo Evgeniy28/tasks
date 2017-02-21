@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
-import AppDispatcher from '../dispatcher/AppDispatcher.js';
-import AppConstants from '../constants/AppConstants.js';
+import AppDispatcher    from '../dispatcher/AppDispatcher';
+import AppConstants     from '../constants/AppConstants';
 
 const CHANGE_EVENT = 'change';
 

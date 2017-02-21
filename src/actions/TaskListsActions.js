@@ -1,20 +1,36 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import Constants     from '../constants/AppConstants';
+import AppConstants  from '../constants/AppConstants';
 
-import api           from '../api';
+import api from '../api';
 
 const TaskListsActions = {
   loadTaskLists() {
     api.listTaskLists()
     .then(data => {
       AppDispatcher.dispatch({
-        type: Constants.TASK_LISTS_LOAD_SUCCESS,
+        type: AppConstants.TASK_LISTS_LOAD_SUCCESS,
         items: data.items
       });
     })
     .catch(err => {
       AppDispatcher.dispatch({
-        type: Constants.TASK_LISTS_LOAD_FAIL,
+        type: AppConstants.TASK_LISTS_LOAD_FAIL,
+        error: err
+      });
+    });
+  },
+
+  loadTaskList(taskListId) {
+    api.showTaskList(taskListId)
+    .then(data => {
+      AppDispatcher.dispatch({
+        type: AppConstants.TASK_LIST_LOAD_SUCCESS,
+        taskList: data
+      });
+    })
+    .catch(err => {
+      AppDispatcher.dispatch({
+        type: AppConstants.TASK_LIST_LOAD_FAIL,
         error: err
       });
     });
@@ -31,6 +47,39 @@ const TaskListsActions = {
     .catch(err => {
       AppDispatcher.dispatch({
         type  : AppConstants.TASK_LIST_CREATE_FAIL,
+        error : err
+      });
+    });
+  },
+
+  updateTaskList(params) {
+    api.updateTaskList({ taskListId: params.taskListId, title: params.name })
+    .then(data => {
+      AppDispatcher.dispatch({
+        type       : AppConstants.TASK_LIST_UPDATE_SUCCESS,
+        taskListId : params.taskListId,
+        taskList   : data
+      });
+    })
+    .catch(err => {
+      AppDispatcher.dispatch({
+        type  : AppConstants.TASK_LIST_UPDATE_FAIL,
+        error : err
+      });
+    });
+  },
+
+  deleteTaskList(params) {
+    api.deleteTaskList({ taskListId: params.taskListId })
+    .then(data => {
+      AppDispatcher.dispatch({
+        type       : AppConstants.TASK_LIST_DELETE_SUCCESS,
+        taskListId : params.taskListId
+      });
+    })
+    .catch(err => {
+      AppDispatcher.dispatch({
+        type  : AppConstants.TASK_LIST_DELETE_FAIL,
         error : err
       });
     });

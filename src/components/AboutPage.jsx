@@ -1,7 +1,9 @@
-import React from 'react';
+import React    from 'react';
 import { Link } from 'react-router';
-import Paper from 'material-ui/Paper';
 
+import Paper    from 'material-ui/Paper';
+
+import './AboutPage.scss';
 
 const AboutPage = React.createClass({
   render() {
